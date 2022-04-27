@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+
+{# TODO: add an image of the record #}
+
+{% block body %}
+  <h1> {{title}} </h1>
+  <div>
+  Tracks:
+  {# {{dump()}} #}
+  {{dump(tracks)}}
+    <ul>
+      {% for track in tracks %}
+        <li>
+          {{track.song}} – {{track.artist|upper}}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}
