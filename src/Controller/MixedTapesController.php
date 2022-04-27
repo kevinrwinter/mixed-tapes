@@ -31,7 +31,7 @@ class MixedTapesController extends AbstractController {
     // Debug:
     // dd($tracks);
     // Dev tools:
-    dump($tracks);
+    // dump($tracks);
     
     return $this->render('mixed/homepage.html.twig', [
       'title' => 'Mixed 90s music',
@@ -42,18 +42,12 @@ class MixedTapesController extends AbstractController {
   #[Route('/browse/{slug}')]
   public function browse(string $slug = null): Response
   {
+    $genre = $slug ? u(str_replace('-', '', $slug))->title(true): null;
 
-    if ($slug) {
-      $title = u(str_replace('-', '', $slug))->title(true);
-      
-    } else {
-      $title = "All Genres";
-    }
-    return new Response('Genre: ' .$title);
-    // return new Response("Breakup mixed-tape? Angsty 90s rock? Browse the collection!");
-    
+    return $this->render('mixed/browse.html.twig', [
+      'genre' => $genre
+    ]);
   }
-  
 }
 
 ?>
