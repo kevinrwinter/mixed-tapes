@@ -10,7 +10,7 @@ use function Symfony\Component\String\u;
 
 class MixedTapesController extends AbstractController {
 
-  #[Route('/')]
+  #[Route('/', name: 'app_homepage')]
   // #[Route('/home')]
   public function homepage(): Response
   {
@@ -39,7 +39,7 @@ class MixedTapesController extends AbstractController {
     ]);
   }
 
-  #[Route('/browse/{slug}')]
+  #[Route('/browse/{slug}', name: 'app_browse')]
   public function browse(string $slug = null): Response
   {
     $genre = $slug ? u(str_replace('-', '', $slug))->title(true): null;
